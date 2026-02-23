@@ -8,64 +8,48 @@ const products = [
     category: "SUITS",
     name: "Classic Taupe Double-Breasted Suit",
     price: "$1,289",
-    image: "/images/suit-taupe.jpg",
-    query: "elegant Asian man wearing taupe double breasted suit professional luxury tailoring",
   },
   {
     id: 2,
     category: "BLAZERS",
     name: "Heritage Green Check Blazer",
     price: "$895",
-    image: "/images/blazer-green.jpg",
-    query: "sophisticated Asian man in luxury green check pattern blazer elegant style",
   },
   {
     id: 3,
     category: "SUITS",
     name: "Luxe Burgundy Evening Suit",
     price: "$1,545",
-    image: "/images/suit-burgundy.jpg",
-    query: "stylish Asian man wearing premium burgundy double breasted evening suit",
   },
   {
     id: 4,
     category: "BLAZERS",
     name: "Sky Blue Textured Blazer",
     price: "$795",
-    image: "/images/blazer-blue.jpg",
-    query: "Asian man in sky blue textured wool blazer luxury fashion photography",
   },
   {
     id: 5,
     category: "BLAZERS",
     name: "Burgundy Gold Button Blazer",
     price: "$925",
-    image: "/images/blazer-burgundy.jpg",
-    query: "elegant Asian man wearing burgundy blazer with gold buttons sophisticated",
   },
   {
     id: 6,
     category: "SUITS",
     name: "Navy Three-Piece Suit",
     price: "$1,450",
-    image: "/images/suit-navy.jpg",
-    query: "Asian man in navy blue three piece suit double breasted luxury tailoring",
   },
   {
     id: 7,
     category: "SUITS",
     name: "Signature Taupe Suit",
     price: "$1,289",
-    image: "/images/suit-taupe-2.jpg",
-    query: "distinguished Asian man wearing taupe beige double breasted suit classic",
   },
   {
     id: 8,
     category: "BLAZERS",
     name: "Grey Double-Breasted Blazer",
     price: "$845",
-    image: "/images/blazer-grey.jpg",
-    query: "Asian man in grey double breasted blazer with peak lapels refined style",
   },
 ]
 
@@ -94,7 +78,7 @@ export function Shop() {
             >
               <div className="relative aspect-[3/4] overflow-hidden bg-muted">
                 <Image
-                  src={`${product.image}?height=600&width=450&query=${encodeURIComponent(product.query)}`}
+                  src="/file.svg"
                   alt={product.name}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
