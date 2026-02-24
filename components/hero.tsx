@@ -7,9 +7,9 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/elegant-man-in-tailored-suit-walking-through-stree.jpg"
+          src="/images/heropict.jpg"
           alt="Gentleman in bespoke suit in Rome"
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover object-[center_30%] opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
       </div>
@@ -32,9 +32,11 @@ export function Hero() {
             Discover Our Heritage
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
           </Button>
-          <Button size="lg" variant="outline">
-            Book Consultation
-          </Button>
+          <a href="https://wa.me/+6281519236835?text=Hello,%20I%20would%20like%20to%20book%20a%20consultation" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" variant="outline">
+              Book Consultation
+            </Button>
+          </a>
         </div>
       </div>
 

@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Phone, Mail, MapPin } from "lucide-react"
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
 
 export function Contact() {
   return (
@@ -26,11 +26,9 @@ export function Contact() {
               <div className="flex items-start gap-4">
                 <MapPin className="text-secondary mt-1" size={20} />
                 <div>
-                  <p className="font-normal text-foreground mb-1">Atelier Location</p>
+                  <p className="font-normal text-foreground mb-1">Tailor Location</p>
                   <p className="text-muted-foreground">
-                    123 Savile Row
-                    <br />
-                    Mayfair, London W1S 3PB
+                    Jalan Hayam Wuruk No 25, Jakarta Barat
                   </p>
                 </div>
               </div>
@@ -38,26 +36,33 @@ export function Contact() {
                 <Phone className="text-secondary mt-1" size={20} />
                 <div>
                   <p className="font-normal text-foreground mb-1">Phone</p>
-                  <p className="text-muted-foreground">+44 20 7123 4567</p>
+                  <p className="text-muted-foreground">021 345 1127</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <MessageCircle className="text-secondary mt-1" size={20} />
+                <div>
+                  <p className="font-normal text-foreground mb-1">Whatsapp</p>
+                  <p className="text-muted-foreground">+62 815 1923 6835</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <Mail className="text-secondary mt-1" size={20} />
                 <div>
                   <p className="font-normal text-foreground mb-1">Email</p>
-                  <p className="text-muted-foreground">appointments@atelierdexcellence.com</p>
+                  <p className="text-muted-foreground">hreggy@gmail.com</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-12 pt-12 border-t border-border">
-              <p className="text-sm text-muted-foreground mb-2">Atelier Hours</p>
+              <p className="text-sm text-muted-foreground mb-2">Open Hours</p>
               <p className="text-foreground">
-                Monday - Friday: 9:00 AM - 6:00 PM
+                Monday - Friday: 9:00 AM - 5:00 PM
                 <br />
-                Saturday: 10:00 AM - 4:00 PM
+                Saturday: 09:00 AM - 4:00 PM
                 <br />
-                Sunday: By Appointment Only
+                Sunday: Closed
               </p>
             </div>
           </div>

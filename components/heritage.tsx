@@ -1,14 +1,81 @@
+"use client"
+
+import { useRef, useState } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+
 export function Heritage() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const images = [
+    "/images/heritage-picts/1935.png",
+    "/images/heritage-picts/1960.png",
+    "/images/heritage-picts/1980.png",
+    "/images/heritage-picts/1985.png",
+  ]
+
+  const scroll = (direction: "left" | "right") => {
+    let newIndex = currentIndex
+    if (direction === "left") {
+      newIndex = Math.max(0, currentIndex - 1)
+    } else {
+      newIndex = Math.min(images.length - 1, currentIndex + 1)
+    }
+    setCurrentIndex(newIndex)
+
+    if (scrollContainerRef.current) {
+      const itemWidth = scrollContainerRef.current.clientWidth
+      scrollContainerRef.current.scrollTo({
+        left: newIndex * itemWidth,
+        behavior: "smooth",
+      })
+    }
+  }
+
   return (
     <section id="heritage" className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          <div className="order-2 md:order-1">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/HW_1935_img002-1qC57I4Zv3YppFBeD72onMpE6R1xwv.jpg"
-              alt="Heritage since 1935"
-              className="w-full h-auto rounded-sm shadow-md"
-            />
+          <div className="order-2 md:order-1 relative">
+            <div
+              ref={scrollContainerRef}
+              className="flex overflow-x-hidden rounded-sm aspect-[800/656] max-w-2xl"
+              style={{ scrollBehavior: "smooth" }}
+            >
+              {images.map((image, index) => (
+                <div key={index} className="w-full flex-shrink-0 h-full flex items-center justify-center">
+                  <img
+                    src={image}
+                    alt={`Heritage image ${index + 1}`}
+                    className="max-w-full max-h-full rounded-sm shadow-md object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => scroll("left")}
+              disabled={currentIndex === 0}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-secondary/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="text-secondary" size={24} />
+            </button>
+
+            <button
+              onClick={() => scroll("right")}
+              disabled={currentIndex === images.length - 1}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-secondary/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Next image"
+            >
+              <ChevronRight className="text-secondary" size={24} />
+            </button>
+
+            {/* Image Counter */}
+            <div className="mt-4 text-center text-sm text-muted-foreground">
+              {currentIndex + 1} / {images.length}
+            </div>
           </div>
           <div className="order-1 md:order-2">
             <p className="text-sm tracking-[0.3em] uppercase text-secondary mb-4">Our Heritage</p>

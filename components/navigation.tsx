@@ -51,9 +51,11 @@ export function Navigation() {
                 {item.label}
               </a>
             ))}
-            <Button variant="outline" size="sm" className="ml-4 bg-transparent">
-              Book Appointment
-            </Button>
+            <a href="https://wa.me/+6281519236835?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm" className="ml-4 bg-transparent">
+                Book Appointment
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}

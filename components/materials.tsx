@@ -1,4 +1,166 @@
+"use client"
+
+import { useRef, useState, useEffect } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+
 export function Materials() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
+
+  const logos = [
+    { src: "/images/zegna.png", alt: "Zegna" },
+    { src: "/images/Dormuiel.png", alt: "Dormuiel" },
+    { src: "/images/holland.png", alt: "Holland Shery" },
+    { src: "/images/scabal.png", alt: "Scabal" },
+    { src: "/images/Albini.png", alt: "Albini" },
+    { src: "/images/Thomas.png", alt: "Thomas" },
+    { src: "/images/Soktas.png", alt: "Soktas" },
+  ]
+
+  // Check scroll position and loop infinitely
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    let isWrapping = false
+
+    const handleScroll = () => {
+      if (isWrapping) return
+      
+      const { scrollLeft, scrollWidth, clientWidth } = container
+      const itemWidth = (scrollWidth / 3) // We have 3x the logos (original + 2 copies)
+
+      // If scrolled past the original set to the right, smoothly transition back
+      if (scrollLeft >= itemWidth * 2) {
+        isWrapping = true
+        const startScroll = scrollLeft
+        const duration = 500
+        const startTime = Date.now()
+
+        const animateWrap = () => {
+          const elapsed = Date.now() - startTime
+          const progress = Math.min(elapsed / duration, 1)
+          
+          // Use easing for smooth transition
+          const easeProgress = 1 - Math.pow(1 - progress, 3)
+          
+          container.scrollLeft = startScroll + (itemWidth - startScroll) * easeProgress
+          
+          if (progress < 1) {
+            requestAnimationFrame(animateWrap)
+          } else {
+            isWrapping = false
+          }
+        }
+        requestAnimationFrame(animateWrap)
+      }
+      // If scrolled before the original set to the left, smoothly transition to the end
+      else if (scrollLeft <= 0) {
+        isWrapping = true
+        const duration = 500
+        const startTime = Date.now()
+
+        const animateWrap = () => {
+          const elapsed = Date.now() - startTime
+          const progress = Math.min(elapsed / duration, 1)
+          
+          // Use easing for smooth transition
+          const easeProgress = 1 - Math.pow(1 - progress, 3)
+          
+          container.scrollLeft = scrollLeft + (itemWidth - scrollLeft) * easeProgress
+          
+          if (progress < 1) {
+            requestAnimationFrame(animateWrap)
+          } else {
+            isWrapping = false
+          }
+        }
+        requestAnimationFrame(animateWrap)
+      }
+    }
+
+    container.addEventListener('scroll', handleScroll)
+    // Set initial position to middle set
+    container.scrollLeft = (container.scrollWidth / 3)
+
+    return () => container.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollContainerRef.current) return
+    
+    const container = scrollContainerRef.current
+    const itemWidth = 320 // w-80 = 320px
+    const currentScroll = container.scrollLeft
+    const setWidth = itemWidth * 7 // 7 logos per set
+    
+    // Calculate the next position to snap to
+    let targetScroll
+    if (direction === "left") {
+      targetScroll = currentScroll - itemWidth
+    } else {
+      targetScroll = currentScroll + itemWidth
+    }
+    
+    const duration = 1000 // Scroll duration in milliseconds
+    const startTime = Date.now()
+    const startScroll = currentScroll
+
+    const animateScroll = () => {
+      const elapsed = Date.now() - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      
+      // Easing function for smooth deceleration
+      const easeProgress = 1 - Math.pow(1 - progress, 3)
+      
+      let newScroll = startScroll + (targetScroll - startScroll) * easeProgress
+      
+      // Handle infinite loop wrapping
+      const { scrollWidth, clientWidth } = container
+      const maxScroll = scrollWidth - clientWidth
+      const oneSetWidth = scrollWidth / 3
+      
+      if (newScroll >= oneSetWidth * 2) {
+        container.scrollLeft = oneSetWidth
+      } else if (newScroll <= 0) {
+        container.scrollLeft = oneSetWidth
+      } else {
+        container.scrollLeft = newScroll
+      }
+      
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll)
+      }
+    }
+
+    requestAnimationFrame(animateScroll)
+  }
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return
+    setIsDragging(true)
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft)
+    setScrollLeft(scrollContainerRef.current.scrollLeft)
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return
+    e.preventDefault()
+    const x = e.pageX - scrollContainerRef.current.offsetLeft
+    const walk = (x - startX) * 2
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const handleMouseLeave = () => {
+    setIsDragging(false)
+  }
+
   const materials = [
     {
       name: "Zegna",
@@ -11,28 +173,28 @@ export function Materials() {
       image: "/cashmere-fabric-luxury-texture.jpg",
     },
     {
-      name: "Scabal",
+      name: "Holland & Sherry",
       description: "Belgian heritage fabrics renowned for superior quality and innovation.",
       image: "/images/logo2.png",
     },
     
     {
-      name: "Holland & Sherry",
+      name: "Scabal",
       description: "British craftsmanship representing the pinnacle of textile artistry.",
       image: "/fine-british-wool-fabric.jpg",
     },
     {
-      name: "Holland & Sherry",
+      name: "Albini",
       description: "British craftsmanship representing the pinnacle of textile artistry.",
       image: "/fine-british-wool-fabric.jpg",
     },
     {
-      name: "Holland & Sherry",
+      name: "Thomas",
       description: "British craftsmanship representing the pinnacle of textile artistry.",
       image: "/fine-british-wool-fabric.jpg",
     },
     {
-      name: "Holland & Sherry",
+      name: "Soktas",
       description: "British craftsmanship representing the pinnacle of textile artistry.",
       image: "/fine-british-wool-fabric.jpg",
     },
@@ -54,9 +216,9 @@ export function Materials() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {materials.map((material) => (
-            <div key={material.name} className="group cursor-pointer">
+            <div key={material.name} className="group cursor-pointer w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]">
               <div className="relative h-[400px] mb-6 overflow-hidden rounded-sm">
                 <img
                   src={material.image || "/placeholder.svg"}
@@ -76,6 +238,42 @@ export function Materials() {
             timeless aesthetic. We maintain relationships with the world's premier mills to ensure access to the most
             exclusive and refined materials available.
           </p>
+        </div>
+
+        {/* Horizontal Scrollable Logo Container */}
+        <div className="mt-16 relative max-w-6xl mx-auto border-t border-b border-secondary/30 py-8">
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-secondary/20 transition-colors"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="text-secondary" size={24} />
+          </button>
+
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-0 overflow-x-auto scrollbar-hide px-16 items-center cursor-grab active:cursor-grabbing"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+          >
+            {/* Render logos 3 times for infinite loop effect */}
+            {[...logos, ...logos, ...logos].map((logo, index) => (
+              <div key={index} className="flex-shrink-0 w-80 h-48 flex items-center justify-center">
+                <img src={logo.src} alt={logo.alt} className="max-w-full max-h-full object-contain pointer-events-none select-none" draggable={false} />
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-secondary/20 transition-colors"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="text-secondary" size={24} />
+          </button>
         </div>
       </div>
     </section>

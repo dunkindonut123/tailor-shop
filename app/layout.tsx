@@ -11,26 +11,13 @@ const cormorantGaramond = Cormorant_Garamond({
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Atelier d'Excellence - Bespoke Tailoring Since 1930",
+  title: "The Beauty Tailor - Bespoke Tailoring Since 1935",
   description:
     "Legendary bespoke tailoring house crafting exceptional garments from the finest materials since 1930. Discover timeless elegance and unparalleled craftsmanship.",
   generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    icon: "/logo-beauty.png",
+    apple: "/logo-beauty.png",
   },
 }
 
