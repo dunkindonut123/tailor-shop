@@ -6,14 +6,30 @@ export function Materials() {
       image: "/images/logo.png",
     },
     {
+      name: "Dormeuil",
+      description: "French prestige fabrics with unparalleled softness and drape.",
+      image: "/cashmere-fabric-luxury-texture.jpg",
+    },
+    {
       name: "Scabal",
       description: "Belgian heritage fabrics renowned for superior quality and innovation.",
       image: "/images/logo2.png",
     },
+    
     {
-      name: "Dormeuil",
-      description: "French prestige fabrics with unparalleled softness and drape.",
-      image: "/cashmere-fabric-luxury-texture.jpg",
+      name: "Holland & Sherry",
+      description: "British craftsmanship representing the pinnacle of textile artistry.",
+      image: "/fine-british-wool-fabric.jpg",
+    },
+    {
+      name: "Holland & Sherry",
+      description: "British craftsmanship representing the pinnacle of textile artistry.",
+      image: "/fine-british-wool-fabric.jpg",
+    },
+    {
+      name: "Holland & Sherry",
+      description: "British craftsmanship representing the pinnacle of textile artistry.",
+      image: "/fine-british-wool-fabric.jpg",
     },
     {
       name: "Holland & Sherry",

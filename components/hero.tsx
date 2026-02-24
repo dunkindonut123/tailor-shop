@@ -16,16 +16,16 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-6">Since 1930</p>
+        <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-6">Since 1935</p>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-foreground mb-8 text-balance leading-[1.1]">
           The Art of
           <br />
           <span className="font-normal italic">Bespoke Elegance</span>
         </h1>
         <p className="text-lg md:text-xl font-light text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-          Where legendary craftsmanship meets the world's finest materials.
+          Specializing in tradition full canvas construction using premim Zegna fabrics.
           <br />
-          Creating timeless garments for discerning gentlemen.
+          Book a private fitting.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button size="lg" className="group">

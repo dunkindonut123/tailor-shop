@@ -16,7 +16,7 @@ export default function Home() {
       <Heritage />
       <Craftsmanship />
       <Materials />
-      <Shop />
+      {/* <Shop /> */}
       <Services />
       <Contact />
       <Footer />

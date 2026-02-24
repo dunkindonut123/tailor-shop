@@ -61,7 +61,7 @@ export function Craftsmanship() {
         </div>
 
         <div className="mt-20 relative h-[500px] rounded-sm overflow-hidden">
-          <img src="/tailor-hands-sewing-bespoke-suit-detail.jpg" alt="Craftsmanship detail" className="w-full h-full object-cover" />
+          <img src="/images/craftmanpict.jpg" alt="Craftsmanship detail" className="w-full h-full object-cover" />
         </div>
       </div>
     </section>
