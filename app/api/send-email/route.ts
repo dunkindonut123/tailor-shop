@@ -1,5 +1,7 @@
-import nodemailer from "nodemailer"
+import { Resend } from "resend"
 import { NextRequest, NextResponse } from "next/server"
+
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,18 +15,9 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Create email transporter with dummy email configuration
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER || "tailor.noreply@gmail.com",
-        pass: process.env.EMAIL_PASSWORD || "dummy-password",
-      },
-    })
-
-    // Email to send consultation request to target email
-    const consultationEmail = {
-      from: process.env.EMAIL_USER || "tailor.noreply@gmail.com",
+    // Send consultation request to target email
+    await resend.emails.send({
+      from: "The Beauty Tailor <onboarding@resend.dev>",
       to: process.env.RECIPIENT_EMAIL || "hreggy@gmail.com",
       subject: `New Consultation Request from ${firstName} ${lastName}`,
       html: `
@@ -36,11 +29,11 @@ export async function POST(request: NextRequest) {
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, "<br>")}</p>
       `,
-    }
+    })
 
-    // Confirmation email to user
-    const confirmationEmail = {
-      from: process.env.EMAIL_USER || "tailor.noreply@gmail.com",
+    // Send confirmation email to user
+    await resend.emails.send({
+      from: "The Beauty Tailor <onboarding@resend.dev>",
       to: email,
       subject: "We Received Your Consultation Request",
       html: `
@@ -54,11 +47,7 @@ export async function POST(request: NextRequest) {
         <p><strong>Location:</strong> Jalan Hayam Wuruk No 25, Jakarta Barat</p>
         <p>Best regards,<br>The Beauty Tailor Team</p>
       `,
-    }
-
-    // Send both emails
-    await transporter.sendMail(consultationEmail)
-    await transporter.sendMail(confirmationEmail)
+    })
 
     return NextResponse.json(
       { message: "Consultation request sent successfully" },

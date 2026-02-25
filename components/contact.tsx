@@ -18,6 +18,7 @@ export function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const [submitError, setSubmitError] = useState<string>("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target
@@ -71,6 +72,7 @@ export function Contact() {
 
     setIsSubmitting(true)
     setSubmitStatus("idle")
+    setSubmitError("")
 
     try {
       const response = await fetch("/api/send-email", {
@@ -80,6 +82,9 @@ export function Contact() {
         },
         body: JSON.stringify(formData),
       })
+
+      const responseData = await response.json()
+      console.log("API Response:", { status: response.status, data: responseData })
 
       if (response.ok) {
         setSubmitStatus("success")
@@ -94,11 +99,14 @@ export function Contact() {
         setErrors({})
         setTimeout(() => setSubmitStatus("idle"), 5000)
       } else {
+        console.error("Email sending failed:", responseData)
+        setSubmitError(responseData.details || responseData.error || "Failed to send email")
         setSubmitStatus("error")
         setTimeout(() => setSubmitStatus("idle"), 5000)
       }
     } catch (error) {
       console.error("Error submitting form:", error)
+      setSubmitError("Network error. Please try again.")
       setSubmitStatus("error")
       setTimeout(() => setSubmitStatus("idle"), 5000)
     } finally {
@@ -282,7 +290,8 @@ export function Contact() {
               )}
               {submitStatus === "error" && (
                 <div className="p-4 bg-red-50 text-red-800 rounded-sm text-sm">
-                  Something went wrong. Please try again later.
+                  <p className="font-semibold mb-1">Error sending request:</p>
+                  <p>{submitError || "Something went wrong. Please try again later."}</p>
                 </div>
               )}
               <Button 
