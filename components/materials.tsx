@@ -10,13 +10,48 @@ export function Materials() {
   const [scrollLeft, setScrollLeft] = useState(0)
 
   const logos = [
-    { src: "/images/zegna.png", alt: "Zegna" },
-    { src: "/images/Dormuiel.png", alt: "Dormuiel" },
-    { src: "/images/holland.png", alt: "Holland Shery" },
-    { src: "/images/scabal.png", alt: "Scabal" },
-    { src: "/images/Albini.png", alt: "Albini" },
-    { src: "/images/Thomas.png", alt: "Thomas" },
-    { src: "/images/Soktas.png", alt: "Soktas" },
+    {
+      src: "/images/zegna.png",
+      alt: "Zegna",
+      name: "Zegna",
+      description: "The world's finest wools and cashmeres from Italian excellence.",
+    },
+    {
+      src: "/images/Dormuiel.png",
+      alt: "Dormeuil",
+      name: "Dormeuil",
+      description: "French prestige fabrics with unparalleled softness and drape.",
+    },
+    {
+      src: "/images/holland.png",
+      alt: "Holland & Sherry",
+      name: "Holland & Sherry",
+      description: "Belgian heritage fabrics renowned for superior quality and innovation.",
+    },
+    {
+      src: "/images/scabal.png",
+      alt: "Scabal",
+      name: "Scabal",
+      description: "British craftsmanship representing the pinnacle of textile artistry.",
+    },
+    {
+      src: "/images/Albini.png",
+      alt: "Albini",
+      name: "Albini",
+      description: "Italian excellence in fine cotton shirting fabrics.",
+    },
+    {
+      src: "/images/Thomas.png",
+      alt: "Thomas",
+      name: "Thomas",
+      description: "Premium fabrics with timeless elegance and superior quality.",
+    },
+    {
+      src: "/images/Soktas.png",
+      alt: "Soktas",
+      name: "Soktas",
+      description: "Turkish textile heritage with modern sophistication.",
+    },
   ]
 
   // Check scroll position and loop infinitely
@@ -24,60 +59,17 @@ export function Materials() {
     const container = scrollContainerRef.current
     if (!container) return
 
-    let isWrapping = false
-
     const handleScroll = () => {
-      if (isWrapping) return
-      
       const { scrollLeft, scrollWidth, clientWidth } = container
       const itemWidth = (scrollWidth / 3) // We have 3x the logos (original + 2 copies)
 
-      // If scrolled past the original set to the right, smoothly transition back
+      // If scrolled past the original set to the right, jump back to the start of second set
       if (scrollLeft >= itemWidth * 2) {
-        isWrapping = true
-        const startScroll = scrollLeft
-        const duration = 500
-        const startTime = Date.now()
-
-        const animateWrap = () => {
-          const elapsed = Date.now() - startTime
-          const progress = Math.min(elapsed / duration, 1)
-          
-          // Use easing for smooth transition
-          const easeProgress = 1 - Math.pow(1 - progress, 3)
-          
-          container.scrollLeft = startScroll + (itemWidth - startScroll) * easeProgress
-          
-          if (progress < 1) {
-            requestAnimationFrame(animateWrap)
-          } else {
-            isWrapping = false
-          }
-        }
-        requestAnimationFrame(animateWrap)
+        container.scrollLeft = itemWidth
       }
-      // If scrolled before the original set to the left, smoothly transition to the end
+      // If scrolled before the original set to the left, jump to the end of second set
       else if (scrollLeft <= 0) {
-        isWrapping = true
-        const duration = 500
-        const startTime = Date.now()
-
-        const animateWrap = () => {
-          const elapsed = Date.now() - startTime
-          const progress = Math.min(elapsed / duration, 1)
-          
-          // Use easing for smooth transition
-          const easeProgress = 1 - Math.pow(1 - progress, 3)
-          
-          container.scrollLeft = scrollLeft + (itemWidth - scrollLeft) * easeProgress
-          
-          if (progress < 1) {
-            requestAnimationFrame(animateWrap)
-          } else {
-            isWrapping = false
-          }
-        }
-        requestAnimationFrame(animateWrap)
+        container.scrollLeft = itemWidth
       }
     }
 
@@ -161,45 +153,6 @@ export function Materials() {
     setIsDragging(false)
   }
 
-  const materials = [
-    {
-      name: "Zegna",
-      description: "The world's finest wools and cashmeres from Italian excellence.",
-      image: "/images/logo.png",
-    },
-    {
-      name: "Dormeuil",
-      description: "French prestige fabrics with unparalleled softness and drape.",
-      image: "/cashmere-fabric-luxury-texture.jpg",
-    },
-    {
-      name: "Holland & Sherry",
-      description: "Belgian heritage fabrics renowned for superior quality and innovation.",
-      image: "/images/logo2.png",
-    },
-    
-    {
-      name: "Scabal",
-      description: "British craftsmanship representing the pinnacle of textile artistry.",
-      image: "/fine-british-wool-fabric.jpg",
-    },
-    {
-      name: "Albini",
-      description: "British craftsmanship representing the pinnacle of textile artistry.",
-      image: "/fine-british-wool-fabric.jpg",
-    },
-    {
-      name: "Thomas",
-      description: "British craftsmanship representing the pinnacle of textile artistry.",
-      image: "/fine-british-wool-fabric.jpg",
-    },
-    {
-      name: "Soktas",
-      description: "British craftsmanship representing the pinnacle of textile artistry.",
-      image: "/fine-british-wool-fabric.jpg",
-    },
-  ]
-
   return (
     <section id="materials" className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
@@ -216,32 +169,8 @@ export function Materials() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8">
-          {materials.map((material) => (
-            <div key={material.name} className="group cursor-pointer w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]">
-              <div className="relative h-[400px] mb-6 overflow-hidden rounded-sm">
-                <img
-                  src={material.image || "/placeholder.svg"}
-                  alt={material.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <h3 className="text-xl font-normal text-foreground mb-3">{material.name}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{material.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-20 text-center">
-          <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            Each fabric in our collection is personally selected for its exceptional quality, luxurious hand-feel, and
-            timeless aesthetic. We maintain relationships with the world's premier mills to ensure access to the most
-            exclusive and refined materials available.
-          </p>
-        </div>
-
         {/* Horizontal Scrollable Logo Container */}
-        <div className="mt-16 relative max-w-6xl mx-auto border-t border-b border-secondary/30 py-8">
+        <div className="mt-16 mb-16 relative max-w-6xl mx-auto border-t border-b border-secondary/30 py-8">
           <button
             onClick={() => scroll("left")}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-secondary/20 transition-colors"
@@ -261,8 +190,12 @@ export function Materials() {
           >
             {/* Render logos 3 times for infinite loop effect */}
             {[...logos, ...logos, ...logos].map((logo, index) => (
-              <div key={index} className="flex-shrink-0 w-80 h-48 flex items-center justify-center">
-                <img src={logo.src} alt={logo.alt} className="max-w-full max-h-full object-contain pointer-events-none select-none" draggable={false} />
+              <div key={index} className="flex-shrink-0 w-80 flex flex-col items-center justify-start px-4">
+                <div className="h-48 flex items-center justify-center mb-4 w-full">
+                  <img src={logo.src} alt={logo.alt} className="max-w-full max-h-full object-contain pointer-events-none select-none" draggable={false} />
+                </div>
+                <h3 className="text-lg font-normal text-foreground mb-2">{logo.name}</h3>
+                <p className="text-sm text-muted-foreground text-center leading-relaxed">{logo.description}</p>
               </div>
             ))}
           </div>
@@ -274,6 +207,14 @@ export function Materials() {
           >
             <ChevronRight className="text-secondary" size={24} />
           </button>
+        </div>
+
+        <div className="text-center">
+          <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            Each fabric in our collection is personally selected for its exceptional quality, luxurious hand-feel, and
+            timeless aesthetic. We maintain relationships with the world's premier mills to ensure access to the most
+            exclusive and refined materials available.
+          </p>
         </div>
       </div>
     </section>
