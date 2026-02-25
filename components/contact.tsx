@@ -23,7 +23,12 @@ export function Contact() {
             </p>
 
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
+              <a 
+                href="https://www.google.com/maps/place/The+Beauty+Tailor/data=!4m2!3m1!1s0x0:0x3699e66c08874e45?sa=X&ved=1t:2428&ictx=111" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 hover:opacity-80 transition-opacity cursor-pointer"
+              >
                 <MapPin className="text-secondary mt-1" size={20} />
                 <div>
                   <p className="font-normal text-foreground mb-1">Tailor Location</p>
@@ -31,7 +36,7 @@ export function Contact() {
                     Jalan Hayam Wuruk No 25, Jakarta Barat
                   </p>
                 </div>
-              </div>
+              </a>
               <div className="flex items-start gap-4">
                 <Phone className="text-secondary mt-1" size={20} />
                 <div>
@@ -39,13 +44,18 @@ export function Contact() {
                   <p className="text-muted-foreground">021 345 1127</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
+              <a 
+                href="https://wa.me/6281519236835" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 hover:opacity-80 transition-opacity cursor-pointer"
+              >
                 <MessageCircle className="text-secondary mt-1" size={20} />
                 <div>
                   <p className="font-normal text-foreground mb-1">Whatsapp</p>
                   <p className="text-muted-foreground">+62 815 1923 6835</p>
                 </div>
-              </div>
+              </a>
               <div className="flex items-start gap-4">
                 <Mail className="text-secondary mt-1" size={20} />
                 <div>

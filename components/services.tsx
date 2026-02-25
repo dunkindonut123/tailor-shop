@@ -66,9 +66,11 @@ export function Services() {
         </div>
 
         <div className="mt-16 text-center">
-          <Button size="lg" variant="outline">
-            Schedule a Consultation
-          </Button>
+          <a href="https://wa.me/6281519236835" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" variant="outline">
+              Schedule a Consultation
+            </Button>
+          </a>
         </div>
       </div>
     </section>

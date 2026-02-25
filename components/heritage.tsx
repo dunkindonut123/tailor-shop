@@ -39,16 +39,17 @@ export function Heritage() {
           <div className="order-2 md:order-1 relative">
             <div
               ref={scrollContainerRef}
-              className="flex overflow-x-hidden rounded-sm max-w-2xl"
+              className="flex overflow-x-hidden rounded-sm max-w-2xl h-[656px]"
               style={{ scrollBehavior: "smooth" }}
             >
               {images.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`Heritage image ${index + 1}`}
-                  className="w-full flex-shrink-0 rounded-sm shadow-md"
-                />
+                <div key={index} className="w-full flex-shrink-0 h-full flex items-center justify-center">
+                  <img
+                    src={image}
+                    alt={`Heritage image ${index + 1}`}
+                    className="max-w-full max-h-full rounded-sm shadow-md object-contain"
+                  />
+                </div>
               ))}
             </div>
 

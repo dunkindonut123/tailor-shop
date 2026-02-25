@@ -23,7 +23,7 @@ export function Hero() {
           <span className="font-normal italic">Bespoke Elegance</span>
         </h1>
         <p className="text-lg md:text-xl font-light text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-          Specializing in tradition full canvas construction using premim Zegna fabrics.
+          Specializing in tradition full canvas construction using premium Zegna fabrics.
           <br />
           Book a private fitting.
         </p>
