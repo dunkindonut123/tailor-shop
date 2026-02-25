@@ -28,10 +28,12 @@ export function Hero() {
           Book a private fitting.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button size="lg" className="group">
-            Discover Our Heritage
-            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-          </Button>
+          <a href="#heritage">
+            <Button size="lg" className="group">
+              Discover Our Heritage
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+            </Button>
+          </a>
           <a href="https://wa.me/+6281519236835?text=Hello,%20I%20would%20like%20to%20book%20a%20consultation" target="_blank" rel="noopener noreferrer">
             <Button size="lg" variant="outline">
               Book Consultation
