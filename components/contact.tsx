@@ -1,11 +1,111 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
 
 export function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }))
+    // Clear error for this field when user starts typing
+    if (errors[id]) {
+      setErrors((prev) => ({
+        ...prev,
+        [id]: "",
+      }))
+    }
+  }
+
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {}
+
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required"
+    }
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required"
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required"
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address"
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required"
+    }
+    if (!formData.service.trim()) {
+      newErrors.service = "Service interest is required"
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required"
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    
+    if (!validateForm()) {
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitStatus("idle")
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+        })
+        setErrors({})
+        setTimeout(() => setSubmitStatus("idle"), 5000)
+      } else {
+        setSubmitStatus("error")
+        setTimeout(() => setSubmitStatus("idle"), 5000)
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      setSubmitStatus("error")
+      setTimeout(() => setSubmitStatus("idle"), 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <section id="contact" className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
@@ -79,47 +179,119 @@ export function Contact() {
 
           <div className="bg-muted/30 p-8 md:p-12 rounded-sm">
             <h3 className="text-2xl font-light text-foreground mb-8">Request Consultation</h3>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="text-sm text-muted-foreground mb-2 block">
-                    First Name
+                    First Name <span className="text-red-500">*</span>
                   </label>
-                  <Input id="firstName" placeholder="John" />
+                  <Input 
+                    id="firstName" 
+                    placeholder="John" 
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    className={errors.firstName ? "border-red-500" : ""}
+                  />
+                  {errors.firstName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="lastName" className="text-sm text-muted-foreground mb-2 block">
-                    Last Name
+                    Last Name <span className="text-red-500">*</span>
                   </label>
-                  <Input id="lastName" placeholder="Smith" />
+                  <Input 
+                    id="lastName" 
+                    placeholder="Smith" 
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    className={errors.lastName ? "border-red-500" : ""}
+                  />
+                  {errors.lastName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+                  )}
                 </div>
               </div>
               <div>
                 <label htmlFor="email" className="text-sm text-muted-foreground mb-2 block">
-                  Email Address
+                  Email Address <span className="text-red-500">*</span>
                 </label>
-                <Input id="email" type="email" placeholder="john.smith@example.com" />
+                <Input 
+                  id="email" 
+                  type="email" 
+                  placeholder="john.smith@example.com" 
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={errors.email ? "border-red-500" : ""}
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="phone" className="text-sm text-muted-foreground mb-2 block">
-                  Phone Number
+                  Phone Number <span className="text-red-500">*</span>
                 </label>
-                <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
+                <Input 
+                  id="phone" 
+                  type="tel" 
+                  placeholder="+1 (555) 000-0000" 
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={errors.phone ? "border-red-500" : ""}
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="service" className="text-sm text-muted-foreground mb-2 block">
-                  Service Interest
+                  Service Interest <span className="text-red-500">*</span>
                 </label>
-                <Input id="service" placeholder="Bespoke Suit, Made-to-Measure, etc." />
+                <Input 
+                  id="service" 
+                  placeholder="Bespoke Suit, Made-to-Measure, etc." 
+                  value={formData.service}
+                  onChange={handleChange}
+                  className={errors.service ? "border-red-500" : ""}
+                />
+                {errors.service && (
+                  <p className="text-red-500 text-sm mt-1">{errors.service}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="message" className="text-sm text-muted-foreground mb-2 block">
-                  Message
+                  Message <span className="text-red-500">*</span>
                 </label>
-                <Textarea id="message" placeholder="Tell us about your requirements..." rows={4} />
+                <Textarea 
+                  id="message" 
+                  placeholder="Tell us about your requirements..." 
+                  rows={4} 
+                  value={formData.message}
+                  onChange={handleChange}
+                  className={errors.message ? "border-red-500" : ""}
+                />
+                {errors.message && (
+                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                )}
               </div>
-              <Button type="submit" className="w-full" size="lg">
-                Submit Request
+              {submitStatus === "success" && (
+                <div className="p-4 bg-green-50 text-green-800 rounded-sm text-sm">
+                  Thank you! Your consultation request has been sent successfully.
+                </div>
+              )}
+              {submitStatus === "error" && (
+                <div className="p-4 bg-red-50 text-red-800 rounded-sm text-sm">
+                  Something went wrong. Please try again later.
+                </div>
+              )}
+              <Button 
+                type="submit" 
+                className="w-full" 
+                size="lg"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Submit Request"}
               </Button>
             </form>
           </div>
