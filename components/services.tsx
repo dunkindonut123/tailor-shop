@@ -6,37 +6,37 @@ export function Services() {
       title: "Bespoke Suits",
       description:
         "Fully customized suits created from scratch with your individual pattern, choice of fabric, and personal style preferences.",
-      price: "From $4,500",
+
     },
     {
       title: "Made-to-Measure",
       description:
         "Expertly tailored garments adjusted to your measurements from our refined base patterns, offering excellent fit and customization.",
-      price: "From $2,800",
+
     },
     {
       title: "Formal Wear",
       description:
         "Tuxedos, dinner jackets, and morning coats crafted for the most important occasions with impeccable attention to detail.",
-      price: "From $5,200",
+
     },
     {
       title: "Shirting",
       description:
         "Custom shirts in the finest Egyptian cotton, Sea Island cotton, and luxury blends, tailored to your exact specifications.",
-      price: "From $350",
+
     },
     {
       title: "Overcoats",
       description:
         "Luxurious overcoats and topcoats in cashmere, vicuña, and premium wools to complete your wardrobe with sophistication.",
-      price: "From $3,500",
+
     },
     {
       title: "Alterations",
       description:
         "Expert alterations and repairs by our master tailors to maintain your garments in pristine condition for years to come.",
-      price: "Upon consultation",
+
     },
   ]
 
@@ -60,7 +60,7 @@ export function Services() {
             >
               <h3 className="text-2xl font-normal text-foreground mb-4">{service.title}</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">{service.description}</p>
-              <p className="text-sm font-light text-secondary">{service.price}</p>
+
             </div>
           ))}
         </div>
