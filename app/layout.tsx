@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Cormorant_Garamond, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
@@ -29,9 +29,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        <GoogleTagManager gtmId="G-8LV6EM5Q4D" />
-      </head>
+      <GoogleAnalytics gaId="G-8LV6EM5Q4D" />
+
       <body className={`${cormorantGaramond.className} antialiased`}>
         {children}
         <Analytics />
