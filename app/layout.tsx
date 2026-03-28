@@ -1,8 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from 'next/script'
 import { Cormorant_Garamond, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -29,11 +28,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <GoogleAnalytics gaId="G-8LV6EM5Q4D" />
-
       <body className={`${cormorantGaramond.className} antialiased`}>
         {children}
-        <Analytics />
+
+        {/* Global Site Tag (gtag.js) - Google Ads */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17068113026"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-17068113026');
+          `}
+        </Script>
       </body>
     </html>
   )
