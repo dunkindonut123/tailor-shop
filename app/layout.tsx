@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className={`${cormorantGaramond.className} antialiased`}>
         {children}
 
-        {/* Global Site Tag (gtag.js) - Google Ads */}
+        {/* Global Site Tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17068113026"
           strategy="afterInteractive"
@@ -43,6 +43,8 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', 'AW-17068113026');
+
+            gtag('config', 'G-8LV6EM5Q4D');
           `}
         </Script>
       </body>
