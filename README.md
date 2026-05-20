@@ -1,38 +1,97 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Tailor Shop — Next.js app
 
-First, run the development server:
+An app built with Next.js. This repository contains a frontend for a tailoring business (the UI references "The Beauty Tailor") and a simple serverless API route that sends consultation emails using the Resend service.
+
+**Quick links**
+- **App entry:** [app/page.tsx](app/page.tsx)
+- **Layout:** [app/layout.tsx](app/layout.tsx)
+- **Email API:** [app/api/send-email/route.ts](app/api/send-email/route.ts)
+
+**Overview**
+- Next.js application using the App Router.
+- UI is componentized under the `components/` folder and assembled in [app/page.tsx](app/page.tsx).
+- Contact form submits to a serverless endpoint at `/api/send-email` which uses the `resend` package to forward requests and send confirmations.
+
+**Key files and folders**
+- [app](app) — Next.js application routes and layouts.
+- [components](components) — UI components: `navigation`, `hero`, `heritage`, `craftsmanship`, `materials`, `services`, `gallery`, `contact`, `footer`, `shop`.
+- [components/contact.tsx](components/contact.tsx) — contact form and frontend validation.
+- [app/api/send-email/route.ts](app/api/send-email/route.ts) — POST handler that sends emails using `Resend` (requires `RESEND_API_KEY`).
+- [lib/utils.ts](lib/utils.ts) — small helpers (e.g. `cn` for class merging).
+
+Dependencies (selected, see `package.json` for full list)
+- `next` — Next.js framework (App Router)
+- `react`, `react-dom` — React 19
+- `tailwindcss` — styling
+- `resend` — sending transactional emails in the API route
+- `zod`, `react-hook-form` and others used across the UI
+
+## Setup
+
+Prerequisites: Node.js and a package manager (`npm`, `pnpm`, or `yarn`).
+
+1. Install dependencies
+
+```bash
+npm install
+```
+
+2. Create a local environment file
+
+Create a `.env.local` in the project root with at least the following variables:
+
+```bash
+RESEND_API_KEY=your_resend_api_key_here
+RECIPIENT_EMAIL=you@yourdomain.com
+```
+
+`RESEND_API_KEY` is required for the `/api/send-email` route to send emails. `RECIPIENT_EMAIL` defaults to `hreggy@gmail.com` in source if not provided.
+
+3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project scripts from `package.json`:
 
-## Learn More
+```bash
+npm run dev    # run Next.js in development mode
+npm run build  # build for production
+npm run start  # start the production server
+npm run lint   # run ESLint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## API: Send Email
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Endpoint: `POST /api/send-email`
+- Expects JSON body with: `firstName`, `lastName`, `email`, `phone`, `service`, `message`.
+- The handler validates required fields and uses `resend.emails.send` twice:
+	- once to send the consultation request to `RECIPIENT_EMAIL`
+	- once to send a confirmation email back to the user `email`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See implementation at [app/api/send-email/route.ts](app/api/send-email/route.ts).
 
-## Deploy on Vercel
+## Notes & implementation details
+- The main page composes the UI from these components: `Navigation`, `Hero`, `Heritage`, `Craftsmanship`, `Materials`, `Services`, `Gallery`, `Contact`, `Footer`. The `Shop` component is present but commented out in [app/page.tsx](app/page.tsx).
+- The contact form performs client-side validation and posts to `/api/send-email` (see [components/contact.tsx](components/contact.tsx)).
+- Styling utilities include `lib/utils.ts` which exposes a `cn` helper that merges class names with `clsx` and `tailwind-merge`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
+- Open an issue or submit a PR with focused changes.
+- Keep changes local to a feature branch and include relevant screenshots or reproduction steps for UI changes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Next steps you might want
+- Add a `.env.example` with the environment variable keys.
+- Add CI (lint/build) and a deployment configuration (Vercel, Netlify, etc.).
+- Add tests for the API route and component-level tests.
+
+If you'd like, I can also:
+- add a `.env.example` file, or
+- run a quick lint or build to confirm the README matches the repo state.
 
