@@ -4,6 +4,8 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { WhatsAppLink } from "@/components/whatsapp-link"
+import { trackFormSubmit } from "@/lib/analytics"
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
 
 export function Contact() {
@@ -82,6 +84,7 @@ export function Contact() {
       })
 
       if (response.ok) {
+        trackFormSubmit()
         setSubmitStatus("success")
         setFormData({
           firstName: "",
@@ -144,10 +147,8 @@ export function Contact() {
                   <p className="text-muted-foreground">021 345 1127</p>
                 </div>
               </div>
-              <a 
-                href="https://wa.me/6281519236835" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                source="contact"
                 className="flex items-start gap-4 hover:opacity-80 transition-opacity cursor-pointer"
               >
                 <MessageCircle className="text-secondary mt-1" size={20} />
@@ -155,7 +156,7 @@ export function Contact() {
                   <p className="font-normal text-foreground mb-1">Whatsapp</p>
                   <p className="text-muted-foreground">+62 815 1923 6835</p>
                 </div>
-              </a>
+              </WhatsAppLink>
               <div className="flex items-start gap-4">
                 <Mail className="text-secondary mt-1" size={20} />
                 <div>

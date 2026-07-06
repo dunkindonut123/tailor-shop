@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import { WhatsAppLink } from "@/components/whatsapp-link"
 import { Menu, X } from "lucide-react"
 
 export function Navigation() {
@@ -51,11 +52,11 @@ export function Navigation() {
                 {item.label}
               </a>
             ))}
-            <a href="https://wa.me/+6281519236835?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener noreferrer">
+            <WhatsAppLink source="nav">
               <Button variant="outline" size="sm" className="ml-4 bg-transparent">
                 Book Appointment
               </Button>
-            </a>
+            </WhatsAppLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -77,9 +78,15 @@ export function Navigation() {
                 {item.label}
               </a>
             ))}
-            <Button variant="outline" size="sm" className="w-full mt-2 bg-transparent">
-              Book Appointment
-            </Button>
+            <WhatsAppLink
+              source="nav_mobile"
+              className="w-full mt-2"
+              onNavigate={() => setIsMobileMenuOpen(false)}
+            >
+              <Button variant="outline" size="sm" className="w-full bg-transparent">
+                Book Appointment
+              </Button>
+            </WhatsAppLink>
           </div>
         )}
       </div>

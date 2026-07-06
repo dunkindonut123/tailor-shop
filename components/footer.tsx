@@ -1,3 +1,5 @@
+import { WhatsAppLink } from "@/components/whatsapp-link"
+
 export function Footer() {
   return (
     <footer className="bg-foreground text-background py-16">
@@ -44,9 +46,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-background transition-colors">
+                <WhatsAppLink
+                  source="footer"
+                  className="hover:text-background transition-colors"
+                >
                   Book Appointment
-                </a>
+                </WhatsAppLink>
               </li>
               <li>
                 <a href="#" className="hover:text-background transition-colors">

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { WhatsAppLink } from "@/components/whatsapp-link"
 import { ArrowRight } from "lucide-react"
 
 export function Hero() {
@@ -34,11 +35,11 @@ export function Hero() {
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </Button>
           </a>
-          <a href="https://wa.me/+6281519236835?text=Hello,%20I%20would%20like%20to%20book%20a%20consultation" target="_blank" rel="noopener noreferrer">
+          <WhatsAppLink source="hero">
             <Button size="lg" variant="outline">
               Book Consultation
             </Button>
-          </a>
+          </WhatsAppLink>
         </div>
       </div>
 

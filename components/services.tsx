@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { WhatsAppLink } from "@/components/whatsapp-link"
 
 export function Services() {
   const services = [
@@ -66,11 +67,11 @@ export function Services() {
         </div>
 
         <div className="mt-16 text-center">
-          <a href="https://wa.me/6281519236835" target="_blank" rel="noopener noreferrer">
+          <WhatsAppLink source="services">
             <Button size="lg" variant="outline">
               Schedule a Consultation
             </Button>
-          </a>
+          </WhatsAppLink>
         </div>
       </div>
     </section>
