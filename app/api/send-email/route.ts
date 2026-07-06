@@ -9,8 +9,30 @@ const fromEmail =
 const recipientEmail =
   process.env.RECIPIENT_EMAIL || "info@thebeautytailor.id"
 
+async function sendEmail(payload: {
+  from: string
+  to: string
+  subject: string
+  html: string
+}) {
+  const { data, error } = await resend.emails.send(payload)
+
+  if (error) {
+    throw new Error(error.message)
+  }
+
+  return data
+}
+
 export async function POST(request: NextRequest) {
   try {
+    if (!process.env.RESEND_API_KEY) {
+      return NextResponse.json(
+        { error: "Email service is not configured (missing RESEND_API_KEY)" },
+        { status: 500 }
+      )
+    }
+
     const { firstName, lastName, email, phone, service, message } = await request.json()
 
     // Validate required fields
@@ -22,7 +44,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Send consultation request to target email
-    await resend.emails.send({
+    await sendEmail({
       from: fromEmail,
       to: recipientEmail,
       subject: `New Consultation Request from ${firstName} ${lastName}`,
@@ -38,7 +60,7 @@ export async function POST(request: NextRequest) {
     })
 
     // Send confirmation email to user
-    await resend.emails.send({
+    await sendEmail({
       from: fromEmail,
       to: email,
       subject: "We Received Your Consultation Request",
@@ -60,10 +82,9 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error("Email sending error:", error)
-    return NextResponse.json(
-      { error: "Failed to send email" },
-      { status: 500 }
-    )
+    const message =
+      error instanceof Error ? error.message : "Failed to send email"
+    console.error("Email sending error:", message)
+    return NextResponse.json({ error: message }, { status: 500 })
   }
 }
