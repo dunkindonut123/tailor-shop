@@ -3,6 +3,12 @@ import { NextRequest, NextResponse } from "next/server"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+const fromEmail =
+  process.env.RESEND_FROM_EMAIL ||
+  "The Beauty Tailor <noreply@thebeautytailor.id>"
+const recipientEmail =
+  process.env.RECIPIENT_EMAIL || "info@thebeautytailor.id"
+
 export async function POST(request: NextRequest) {
   try {
     const { firstName, lastName, email, phone, service, message } = await request.json()
@@ -17,8 +23,8 @@ export async function POST(request: NextRequest) {
 
     // Send consultation request to target email
     await resend.emails.send({
-      from: "The Beauty Tailor <onboarding@resend.dev>",
-      to: process.env.RECIPIENT_EMAIL || "hreggy@gmail.com",
+      from: fromEmail,
+      to: recipientEmail,
       subject: `New Consultation Request from ${firstName} ${lastName}`,
       html: `
         <h2>New Consultation Request</h2>
@@ -33,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to user
     await resend.emails.send({
-      from: "The Beauty Tailor <onboarding@resend.dev>",
+      from: fromEmail,
       to: email,
       subject: "We Received Your Consultation Request",
       html: `

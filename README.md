@@ -43,10 +43,12 @@ Create a `.env.local` in the project root with at least the following variables:
 
 ```bash
 RESEND_API_KEY=your_resend_api_key_here
-RECIPIENT_EMAIL=you@yourdomain.com
+RESEND_FROM_EMAIL=The Beauty Tailor <noreply@thebeautytailor.id>
+RECIPIENT_EMAIL=info@thebeautytailor.id
+NEXT_PUBLIC_CONTACT_EMAIL=info@thebeautytailor.id
 ```
 
-`RESEND_API_KEY` is required for the `/api/send-email` route to send emails. `RECIPIENT_EMAIL` defaults to `hreggy@gmail.com` in source if not provided.
+`RESEND_API_KEY` is required for the `/api/send-email` route to send emails. The other variables default to `@thebeautytailor.id` addresses if not provided.
 
 3. Run the development server
 

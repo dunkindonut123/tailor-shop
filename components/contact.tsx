@@ -8,6 +8,9 @@ import { WhatsAppLink } from "@/components/whatsapp-link"
 import { trackFormSubmit } from "@/lib/analytics"
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react"
 
+const contactEmail =
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@thebeautytailor.id"
+
 export function Contact() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -161,7 +164,12 @@ export function Contact() {
                 <Mail className="text-secondary mt-1" size={20} />
                 <div>
                   <p className="font-normal text-foreground mb-1">Email</p>
-                  <p className="text-muted-foreground">hreggy@gmail.com</p>
+                  <a
+                    href={`mailto:${contactEmail}`}
+                    className="text-muted-foreground hover:underline"
+                  >
+                    {contactEmail}
+                  </a>
                 </div>
               </div>
             </div>
