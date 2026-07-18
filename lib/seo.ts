@@ -14,6 +14,7 @@ export const NAP = {
   streetAddress: "Jalan Hayam Wuruk No 25",
   addressLocality: "Jakarta Pusat",
   addressRegion: "DKI Jakarta",
+  postalCode: "11180",
   addressCountry: "ID",
   telephone: "+62213451127",
   email: "info@thebeautytailor.id",
@@ -34,6 +35,7 @@ export function buildLocalBusinessJsonLd() {
       streetAddress: NAP.streetAddress,
       addressLocality: NAP.addressLocality,
       addressRegion: NAP.addressRegion,
+      postalCode: NAP.postalCode,
       addressCountry: NAP.addressCountry,
     },
     openingHoursSpecification: [
