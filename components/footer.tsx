@@ -8,41 +8,41 @@ export function Footer() {
           <div className="md:col-span-2">
             <h3 className="text-2xl font-light tracking-wider mb-4">The Beauty Tailor</h3>
             <p className="text-background/70 leading-relaxed max-w-md">
-              Crafting bespoke garments of exceptional quality since 1935. Where legendary tradition meets contemporary
-              elegance.
+              Menciptakan pakaian bespoke berkualitas luar biasa sejak 1935. Di mana tradisi legendaris bertemu
+              keanggunan kontemporer.
             </p>
           </div>
           <div>
-            <h4 className="text-sm tracking-[0.2em] uppercase mb-4">Navigation</h4>
+            <h4 className="text-sm tracking-[0.2em] uppercase mb-4">Navigasi</h4>
             <ul className="space-y-2 text-background/70">
               <li>
                 <a href="#heritage" className="hover:text-background transition-colors">
-                  Heritage
+                  Warisan
                 </a>
               </li>
               <li>
                 <a href="#craftsmanship" className="hover:text-background transition-colors">
-                  Craftsmanship
+                  Keahlian
                 </a>
               </li>
               <li>
                 <a href="#materials" className="hover:text-background transition-colors">
-                  Materials
+                  Bahan
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-background transition-colors">
-                  Services
+                  Layanan
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="text-sm tracking-[0.2em] uppercase mb-4">Connect</h4>
+            <h4 className="text-sm tracking-[0.2em] uppercase mb-4">Terhubung</h4>
             <ul className="space-y-2 text-background/70">
               <li>
                 <a href="#contact" className="hover:text-background transition-colors">
-                  Contact Us
+                  Hubungi Kami
                 </a>
               </li>
               <li>
@@ -50,7 +50,7 @@ export function Footer() {
                   source="footer"
                   className="hover:text-background transition-colors"
                 >
-                  Book Appointment
+                  Buat Janji
                 </WhatsAppLink>
               </li>
               <li>
@@ -60,14 +60,14 @@ export function Footer() {
               </li>
               <li>
                 <a href="#" className="hover:text-background transition-colors">
-                  Privacy Policy
+                  Kebijakan Privasi
                 </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="pt-8 border-t border-background/20 text-center text-sm text-background/50">
-          <p>© 2025 Atelier d'Excellence. All rights reserved. Established 1930.</p>
+          <p>© 2025 Atelier d&apos;Excellence. Hak cipta dilindungi. Didirikan 1930.</p>
         </div>
       </div>
     </footer>

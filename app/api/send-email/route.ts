@@ -47,14 +47,14 @@ export async function POST(request: NextRequest) {
     await sendEmail({
       from: fromEmail,
       to: recipientEmail,
-      subject: `New Consultation Request from ${firstName} ${lastName}`,
+      subject: `Permintaan Konsultasi Baru dari ${firstName} ${lastName}`,
       html: `
-        <h2>New Consultation Request</h2>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <h2>Permintaan Konsultasi Baru</h2>
+        <p><strong>Nama:</strong> ${firstName} ${lastName}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
-        <p><strong>Service Interest:</strong> ${service || "Not specified"}</p>
-        <p><strong>Message:</strong></p>
+        <p><strong>Telepon:</strong> ${phone || "Tidak diisi"}</p>
+        <p><strong>Minat Layanan:</strong> ${service || "Tidak disebutkan"}</p>
+        <p><strong>Pesan:</strong></p>
         <p>${message.replace(/\n/g, "<br>")}</p>
       `,
     })
@@ -63,22 +63,22 @@ export async function POST(request: NextRequest) {
     await sendEmail({
       from: fromEmail,
       to: email,
-      subject: "We Received Your Consultation Request",
+      subject: "Kami Telah Menerima Permintaan Konsultasi Anda",
       html: `
-        <h2>Thank You for Your Interest!</h2>
-        <p>Dear ${firstName},</p>
-        <p>We have received your consultation request and appreciate your interest in our tailoring services.</p>
-        <p>We will review your request and get back to you within 24-48 hours.</p>
-        <p>In the meantime, if you have any urgent questions, feel free to contact us directly:</p>
-        <p><strong>Phone:</strong> 021 345 1127</p>
+        <h2>Terima Kasih atas Minat Anda!</h2>
+        <p>Yth. ${firstName},</p>
+        <p>Kami telah menerima permintaan konsultasi Anda dan menghargai minat Anda terhadap layanan tailor kami.</p>
+        <p>Kami akan meninjau permintaan Anda dan menghubungi kembali dalam 24–48 jam.</p>
+        <p>Sementara menunggu, jika ada pertanyaan mendesak, silakan hubungi kami langsung:</p>
+        <p><strong>Telepon:</strong> 021 345 1127</p>
         <p><strong>WhatsApp:</strong> +62 815 1923 6835</p>
-        <p><strong>Location:</strong> Jalan Hayam Wuruk No 25, Jakarta Barat</p>
-        <p>Best regards,<br>The Beauty Tailor Team</p>
+        <p><strong>Lokasi:</strong> Jalan Hayam Wuruk No 25, Jakarta Barat</p>
+        <p>Salam hormat,<br>Tim The Beauty Tailor</p>
       `,
     })
 
     return NextResponse.json(
-      { message: "Consultation request sent successfully" },
+      { message: "Permintaan konsultasi berhasil dikirim" },
       { status: 200 }
     )
   } catch (error) {

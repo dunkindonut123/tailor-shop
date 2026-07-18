@@ -18,9 +18,9 @@ const META_PIXEL_ID =
   process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "3473448096145997"
 
 export const metadata: Metadata = {
-  title: "The Beauty Tailor - Bespoke Tailoring Since 1935",
+  title: "The Beauty Tailor - Tailor Bespoke Sejak 1935",
   description:
-    "Legendary bespoke tailoring house crafting exceptional garments from the finest materials since 1930. Discover timeless elegance and unparalleled craftsmanship.",
+    "Rumah tailor bespoke legendaris yang menciptakan pakaian luar biasa dari bahan terbaik sejak 1930. Temukan keanggunan abadi dan keahlian tanpa tanding.",
   generator: "v0.app",
   icons: {
     icon: "/logo-beauty.png",
@@ -34,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="id" className="scroll-smooth">
       <body className={`${cormorantGaramond.className} antialiased`}>
         {children}
 

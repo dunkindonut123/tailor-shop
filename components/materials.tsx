@@ -14,43 +14,43 @@ export function Materials() {
       src: "/images/zegna.png",
       alt: "Zegna",
       name: "Zegna",
-      description: "The world's finest wools and cashmeres from Italian excellence.",
+      description: "Wool dan cashmere terbaik dunia dari keunggulan Italia.",
     },
     {
       src: "/images/Dormuiel.png",
       alt: "Dormeuil",
       name: "Dormeuil",
-      description: "French prestige fabrics with unparalleled softness and drape.",
+      description: "Kain prestise Prancis dengan kelembutan dan jatuh yang tak tertandingi.",
     },
     {
       src: "/images/holland.png",
       alt: "Holland & Sherry",
       name: "Holland & Sherry",
-      description: "Belgian heritage fabrics renowned for superior quality and innovation.",
+      description: "Kain warisan Belgia yang terkenal akan kualitas dan inovasinya.",
     },
     {
       src: "/images/scabal.png",
       alt: "Scabal",
       name: "Scabal",
-      description: "British craftsmanship representing the pinnacle of textile artistry.",
+      description: "Keahlian Inggris yang mewakili puncak seni tekstil.",
     },
     {
       src: "/images/Albini.png",
       alt: "Albini",
       name: "Albini",
-      description: "Italian excellence in fine cotton shirting fabrics.",
+      description: "Keunggulan Italia dalam kain katun halus untuk kemeja.",
     },
     {
       src: "/images/Thomas.png",
       alt: "Thomas",
       name: "Thomas",
-      description: "Premium fabrics with timeless elegance and superior quality.",
+      description: "Kain premium dengan keanggunan abadi dan kualitas unggul.",
     },
     {
       src: "/images/Soktas.png",
       alt: "Soktas",
       name: "Soktas",
-      description: "Turkish textile heritage with modern sophistication.",
+      description: "Warisan tekstil Turki dengan sofistikasi modern.",
     },
   ]
 
@@ -157,15 +157,15 @@ export function Materials() {
     <section id="materials" className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <p className="text-sm tracking-[0.3em] uppercase text-secondary mb-4">Premium Materials</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-secondary mb-4">Bahan Premium</p>
           <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6 text-balance">
-            The World's Finest
+            Rumah Kain
             <br />
-            <span className="italic font-normal">Fabric Houses</span>
+            <span className="italic font-normal">Terbaik di Dunia</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            We source exclusively from the most prestigious fabric mills, ensuring every garment is crafted from
-            materials of exceptional quality.
+            Kami hanya mengambil dari pabrik kain paling prestisius, memastikan setiap pakaian dibuat dari
+            bahan berkualitas luar biasa.
           </p>
         </div>
 
@@ -174,7 +174,7 @@ export function Materials() {
           <button
             onClick={() => scroll("left")}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-secondary/20 transition-colors"
-            aria-label="Scroll left"
+            aria-label="Geser ke kiri"
           >
             <ChevronLeft className="text-secondary" size={24} />
           </button>
@@ -203,7 +203,7 @@ export function Materials() {
           <button
             onClick={() => scroll("right")}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-secondary/20 transition-colors"
-            aria-label="Scroll right"
+            aria-label="Geser ke kanan"
           >
             <ChevronRight className="text-secondary" size={24} />
           </button>
@@ -211,9 +211,9 @@ export function Materials() {
 
         <div className="text-center">
           <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            Each fabric in our collection is personally selected for its exceptional quality, luxurious hand-feel, and
-            timeless aesthetic. We maintain relationships with the world's premier mills to ensure access to the most
-            exclusive and refined materials available.
+            Setiap kain dalam koleksi kami dipilih secara pribadi karena kualitasnya yang luar biasa, rasa mewah di tangan,
+            dan estetika abadi. Kami menjaga hubungan dengan pabrik terbaik di dunia untuk memastikan akses ke bahan
+            paling eksklusif dan halus yang tersedia.
           </p>
         </div>
       </div>

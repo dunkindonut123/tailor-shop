@@ -43,24 +43,24 @@ export function Contact() {
     const newErrors: Record<string, string> = {}
 
     if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required"
+      newErrors.firstName = "Nama depan wajib diisi"
     }
     if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required"
+      newErrors.lastName = "Nama belakang wajib diisi"
     }
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required"
+      newErrors.email = "Email wajib diisi"
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address"
+      newErrors.email = "Masukkan alamat email yang valid"
     }
     if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required"
+      newErrors.phone = "Nomor telepon wajib diisi"
     }
     if (!formData.service.trim()) {
-      newErrors.service = "Service interest is required"
+      newErrors.service = "Minat layanan wajib diisi"
     }
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required"
+      newErrors.message = "Pesan wajib diisi"
     }
 
     setErrors(newErrors)
@@ -117,15 +117,15 @@ export function Contact() {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 md:gap-20">
           <div>
-            <p className="text-sm tracking-[0.3em] uppercase text-secondary mb-4">Get in Touch</p>
+            <p className="text-sm tracking-[0.3em] uppercase text-secondary mb-4">Hubungi Kami</p>
             <h2 className="text-4xl md:text-5xl font-light text-foreground mb-8 text-balance">
-              Begin Your
+              Mulai Perjalanan
               <br />
-              <span className="italic font-normal">Bespoke Journey</span>
+              <span className="italic font-normal">Bespoke Anda</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-              Visit our atelier or reach out to schedule a private consultation. We look forward to creating your
-              perfect garment.
+              Kunjungi atelier kami atau hubungi kami untuk menjadwalkan konsultasi pribadi. Kami menantikan untuk
+              menciptakan pakaian sempurna Anda.
             </p>
 
             <div className="space-y-6">
@@ -137,7 +137,7 @@ export function Contact() {
               >
                 <MapPin className="text-secondary mt-1" size={20} />
                 <div>
-                  <p className="font-normal text-foreground mb-1">Tailor Location</p>
+                  <p className="font-normal text-foreground mb-1">Lokasi Tailor</p>
                   <p className="text-muted-foreground">
                     Jalan Hayam Wuruk No 25, Jakarta Pusat
                   </p>
@@ -146,7 +146,7 @@ export function Contact() {
               <div className="flex items-start gap-4">
                 <Phone className="text-secondary mt-1" size={20} />
                 <div>
-                  <p className="font-normal text-foreground mb-1">Phone</p>
+                  <p className="font-normal text-foreground mb-1">Telepon</p>
                   <p className="text-muted-foreground">021 345 1127</p>
                 </div>
               </div>
@@ -156,7 +156,7 @@ export function Contact() {
               >
                 <MessageCircle className="text-secondary mt-1" size={20} />
                 <div>
-                  <p className="font-normal text-foreground mb-1">Whatsapp</p>
+                  <p className="font-normal text-foreground mb-1">WhatsApp</p>
                   <p className="text-muted-foreground">+62 815 1923 6835</p>
                 </div>
               </WhatsAppLink>
@@ -175,28 +175,28 @@ export function Contact() {
             </div>
 
             <div className="mt-12 pt-12 border-t border-border">
-              <p className="text-sm text-muted-foreground mb-2">Open Hours</p>
+              <p className="text-sm text-muted-foreground mb-2">Jam Buka</p>
               <p className="text-foreground">
-                Monday - Friday: 9:00 AM - 5:00 PM
+                Senin - Jumat: 09.00 - 17.00
                 <br />
-                Saturday: 09:00 AM - 4:00 PM
+                Sabtu: 09.00 - 16.00
                 <br />
-                Sunday: Closed
+                Minggu: Tutup
               </p>
             </div>
           </div>
 
           <div className="bg-muted/30 p-8 md:p-12 rounded-sm">
-            <h3 className="text-2xl font-light text-foreground mb-8">Request Consultation</h3>
+            <h3 className="text-2xl font-light text-foreground mb-8">Minta Konsultasi</h3>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="text-sm text-muted-foreground mb-2 block">
-                    First Name <span className="text-red-500">*</span>
+                    Nama Depan <span className="text-red-500">*</span>
                   </label>
                   <Input 
                     id="firstName" 
-                    placeholder="John" 
+                    placeholder="Budi" 
                     value={formData.firstName}
                     onChange={handleChange}
                     className={errors.firstName ? "border-red-500" : ""}
@@ -207,11 +207,11 @@ export function Contact() {
                 </div>
                 <div>
                   <label htmlFor="lastName" className="text-sm text-muted-foreground mb-2 block">
-                    Last Name <span className="text-red-500">*</span>
+                    Nama Belakang <span className="text-red-500">*</span>
                   </label>
                   <Input 
                     id="lastName" 
-                    placeholder="Smith" 
+                    placeholder="Santoso" 
                     value={formData.lastName}
                     onChange={handleChange}
                     className={errors.lastName ? "border-red-500" : ""}
@@ -223,12 +223,12 @@ export function Contact() {
               </div>
               <div>
                 <label htmlFor="email" className="text-sm text-muted-foreground mb-2 block">
-                  Email Address <span className="text-red-500">*</span>
+                  Alamat Email <span className="text-red-500">*</span>
                 </label>
                 <Input 
                   id="email" 
                   type="email" 
-                  placeholder="john.smith@example.com" 
+                  placeholder="budi.santoso@contoh.com" 
                   value={formData.email}
                   onChange={handleChange}
                   className={errors.email ? "border-red-500" : ""}
@@ -239,12 +239,12 @@ export function Contact() {
               </div>
               <div>
                 <label htmlFor="phone" className="text-sm text-muted-foreground mb-2 block">
-                  Phone Number <span className="text-red-500">*</span>
+                  Nomor Telepon <span className="text-red-500">*</span>
                 </label>
                 <Input 
                   id="phone" 
                   type="tel" 
-                  placeholder="+1 (555) 000-0000" 
+                  placeholder="+62 812 0000 0000" 
                   value={formData.phone}
                   onChange={handleChange}
                   className={errors.phone ? "border-red-500" : ""}
@@ -255,11 +255,11 @@ export function Contact() {
               </div>
               <div>
                 <label htmlFor="service" className="text-sm text-muted-foreground mb-2 block">
-                  Service Interest <span className="text-red-500">*</span>
+                  Minat Layanan <span className="text-red-500">*</span>
                 </label>
                 <Input 
                   id="service" 
-                  placeholder="Bespoke Suit, Made-to-Measure, etc." 
+                  placeholder="Jas Bespoke, Made-to-Measure, dll." 
                   value={formData.service}
                   onChange={handleChange}
                   className={errors.service ? "border-red-500" : ""}
@@ -270,11 +270,11 @@ export function Contact() {
               </div>
               <div>
                 <label htmlFor="message" className="text-sm text-muted-foreground mb-2 block">
-                  Message <span className="text-red-500">*</span>
+                  Pesan <span className="text-red-500">*</span>
                 </label>
                 <Textarea 
                   id="message" 
-                  placeholder="Tell us about your requirements..." 
+                  placeholder="Ceritakan kebutuhan Anda..." 
                   rows={4} 
                   value={formData.message}
                   onChange={handleChange}
@@ -286,12 +286,12 @@ export function Contact() {
               </div>
               {submitStatus === "success" && (
                 <div className="p-4 bg-green-50 text-green-800 rounded-sm text-sm">
-                  Thank you! Your consultation request has been sent successfully.
+                  Terima kasih! Permintaan konsultasi Anda telah berhasil dikirim.
                 </div>
               )}
               {submitStatus === "error" && (
                 <div className="p-4 bg-red-50 text-red-800 rounded-sm text-sm">
-                  Something went wrong. Please try again later.
+                  Terjadi kesalahan. Silakan coba lagi nanti.
                 </div>
               )}
               <Button 
@@ -300,7 +300,7 @@ export function Contact() {
                 size="lg"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Submitting..." : "Submit Request"}
+                {isSubmitting ? "Mengirim..." : "Kirim Permintaan"}
               </Button>
             </form>
           </div>

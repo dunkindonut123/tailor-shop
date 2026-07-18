@@ -18,11 +18,11 @@ export function Navigation() {
   }, [])
 
   const menuItems = [
-    { label: "Heritage", href: "#heritage" },
-    { label: "Craftsmanship", href: "#craftsmanship" },
-    { label: "Materials", href: "#materials" },
-    { label: "Services", href: "#services" },
-    { label: "Contact", href: "#contact" },
+    { label: "Warisan", href: "#heritage" },
+    { label: "Keahlian", href: "#craftsmanship" },
+    { label: "Bahan", href: "#materials" },
+    { label: "Layanan", href: "#services" },
+    { label: "Kontak", href: "#contact" },
   ]
 
   return (
@@ -54,7 +54,7 @@ export function Navigation() {
             ))}
             <WhatsAppLink source="nav">
               <Button variant="outline" size="sm" className="ml-4 bg-transparent">
-                Book Appointment
+                Buat Janji
               </Button>
             </WhatsAppLink>
           </div>
@@ -84,7 +84,7 @@ export function Navigation() {
               onNavigate={() => setIsMobileMenuOpen(false)}
             >
               <Button variant="outline" size="sm" className="w-full bg-transparent">
-                Book Appointment
+                Buat Janji
               </Button>
             </WhatsAppLink>
           </div>

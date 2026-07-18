@@ -5,50 +5,50 @@ import Image from "next/image"
 const products = [
   {
     id: 1,
-    category: "SUITS",
-    name: "Classic Taupe Double-Breasted Suit",
+    category: "JAS",
+    name: "Jas Double-Breasted Taupe Klasik",
     price: "$1,289",
   },
   {
     id: 2,
-    category: "BLAZERS",
-    name: "Heritage Green Check Blazer",
+    category: "BLAZER",
+    name: "Blazer Check Hijau Heritage",
     price: "$895",
   },
   {
     id: 3,
-    category: "SUITS",
-    name: "Luxe Burgundy Evening Suit",
+    category: "JAS",
+    name: "Jas Malam Burgundy Mewah",
     price: "$1,545",
   },
   {
     id: 4,
-    category: "BLAZERS",
-    name: "Sky Blue Textured Blazer",
+    category: "BLAZER",
+    name: "Blazer Bertekstur Biru Langit",
     price: "$795",
   },
   {
     id: 5,
-    category: "BLAZERS",
-    name: "Burgundy Gold Button Blazer",
+    category: "BLAZER",
+    name: "Blazer Burgundy Kancing Emas",
     price: "$925",
   },
   {
     id: 6,
-    category: "SUITS",
-    name: "Navy Three-Piece Suit",
+    category: "JAS",
+    name: "Jas Tiga Potong Navy",
     price: "$1,450",
   },
   {
     id: 7,
-    category: "SUITS",
-    name: "Signature Taupe Suit",
+    category: "JAS",
+    name: "Jas Taupe Signature",
     price: "$1,289",
   },
   {
     id: 8,
-    category: "BLAZERS",
-    name: "Grey Double-Breasted Blazer",
+    category: "BLAZER",
+    name: "Blazer Double-Breasted Abu-abu",
     price: "$845",
   },
 ]
@@ -59,14 +59,14 @@ export function Shop() {
       <div className="container mx-auto px-4">
         <div className="flex items-end justify-between mb-16">
           <div>
-            <h2 className="font-serif text-5xl text-foreground mb-4">New Arrivals</h2>
+            <h2 className="font-serif text-5xl text-foreground mb-4">Koleksi Terbaru</h2>
             <p className="text-muted-foreground max-w-xl">
-              Discover our latest collection of bespoke suits and blazers, crafted with the finest materials and
-              timeless elegance
+              Temukan koleksi terbaru jas dan blazer bespoke kami, dibuat dengan bahan terbaik dan
+              keanggunan abadi
             </p>
           </div>
           <Button variant="link" className="text-foreground hover:text-primary text-base">
-            View All →
+            Lihat Semua →
           </Button>
         </div>
 
@@ -99,7 +99,7 @@ export function Shop() {
             variant="outline"
             className="px-12 py-6 text-base border-2 hover:bg-foreground hover:text-background transition-all bg-transparent"
           >
-            Explore Full Collection
+            Jelajahi Koleksi Lengkap
           </Button>
         </div>
       </div>

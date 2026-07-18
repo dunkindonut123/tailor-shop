@@ -2,33 +2,33 @@ export function Craftsmanship() {
   const craftSteps = [
     {
       number: "01",
-      title: "Consultation",
-      description: "Personal meeting to understand your style, preferences, and requirements.",
+      title: "Konsultasi",
+      description: "Pertemuan pribadi untuk memahami gaya, preferensi, dan kebutuhan Anda.",
     },
     {
       number: "02",
-      title: "Measurement",
-      description: "Precise measurements taken by our master tailors for the perfect fit.",
+      title: "Pengukuran",
+      description: "Pengukuran akurat oleh master tailor kami demi kecocokan sempurna.",
     },
     {
       number: "03",
-      title: "Fabric Selection",
-      description: "Choose from our curated collection of the world's finest fabrics.",
+      title: "Pemilihan Kain",
+      description: "Pilih dari koleksi kain terbaik dunia yang kami kurasi.",
     },
     {
       number: "04",
-      title: "Pattern Creation",
-      description: "Individual pattern created specifically for your unique body shape.",
+      title: "Pembuatan Pola",
+      description: "Pola individual dibuat khusus sesuai bentuk tubuh unik Anda.",
     },
     {
       number: "05",
-      title: "First Fitting",
-      description: "Initial fitting to ensure the garment drapes perfectly.",
+      title: "Fitting Pertama",
+      description: "Fitting awal untuk memastikan pakaian jatuh dengan sempurna.",
     },
     {
       number: "06",
-      title: "Final Creation",
-      description: "Meticulous hand-finishing and final fitting of your bespoke garment.",
+      title: "Penyelesaian Akhir",
+      description: "Finishing tangan yang teliti dan fitting akhir pada pakaian bespoke Anda.",
     },
   ]
 
@@ -36,15 +36,15 @@ export function Craftsmanship() {
     <section id="craftsmanship" className="py-24 md:py-32 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <p className="text-sm tracking-[0.3em] uppercase text-secondary mb-4">The Process</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-secondary mb-4">Prosesnya</p>
           <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6 text-balance">
-            Masterful Craftsmanship
+            Keahlian Mahir
             <br />
-            <span className="italic font-normal">In Every Stitch</span>
+            <span className="italic font-normal">Di Setiap Jahitan</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            From the first consultation to the final stitch, every step is executed with precision and care by our
-            master artisans.
+            Dari konsultasi pertama hingga jahitan terakhir, setiap langkah dikerjakan dengan ketelitian dan kepedulian
+            oleh para artisan ahli kami.
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export function Craftsmanship() {
         </div>
 
         <div className="mt-20 relative h-[500px] rounded-sm overflow-hidden">
-          <img src="/images/craftmanpict.jpg" alt="Craftsmanship detail" className="w-full h-full object-cover" />
+          <img src="/images/craftmanpict.jpg" alt="Detail keahlian menjahit" className="w-full h-full object-cover" />
         </div>
       </div>
     </section>

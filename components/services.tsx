@@ -4,39 +4,39 @@ import { WhatsAppLink } from "@/components/whatsapp-link"
 export function Services() {
   const services = [
     {
-      title: "Bespoke Suits",
+      title: "Jas Bespoke",
       description:
-        "Fully customized suits created from scratch with your individual pattern, choice of fabric, and personal style preferences.",
+        "Jas yang sepenuhnya dikustom dari awal dengan pola individual, pilihan kain, dan preferensi gaya pribadi Anda.",
 
     },
     {
       title: "Made-to-Measure",
       description:
-        "Expertly tailored garments adjusted to your measurements from our refined base patterns, offering excellent fit and customization.",
+        "Pakaian yang disesuaikan secara ahli dengan ukuran Anda dari pola dasar kami yang telah disempurnakan, menawarkan kecocokan dan kustomisasi yang unggul.",
 
     },
     {
-      title: "Formal Wear",
+      title: "Pakaian Formal",
       description:
-        "Tuxedos, dinner jackets, and morning coats crafted for the most important occasions with impeccable attention to detail.",
+        "Tuxedo, dinner jacket, dan morning coat untuk momen paling penting, dengan perhatian detail yang sempurna.",
 
     },
     {
-      title: "Shirting",
+      title: "Kemeja",
       description:
-        "Custom shirts in the finest Egyptian cotton, Sea Island cotton, and luxury blends, tailored to your exact specifications.",
+        "Kemeja custom dari katun Mesir terbaik, Sea Island cotton, dan campuran mewah, dijahit sesuai spesifikasi tepat Anda.",
 
     },
     {
-      title: "Overcoats",
+      title: "Overcoat",
       description:
-        "Luxurious overcoats and topcoats in cashmere, vicuña, and premium wools to complete your wardrobe with sophistication.",
+        "Overcoat dan topcoat mewah dari cashmere, vicuña, dan wool premium untuk melengkapi penampilan Anda dengan sofistikasi.",
 
     },
     {
-      title: "Alterations",
+      title: "Alterasi",
       description:
-        "Expert alterations and repairs by our master tailors to maintain your garments in pristine condition for years to come.",
+        "Alterasi dan perbaikan ahli oleh master tailor kami agar pakaian Anda tetap prima selama bertahun-tahun.",
 
     },
   ]
@@ -45,11 +45,11 @@ export function Services() {
     <section id="services" className="py-24 md:py-32 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <p className="text-sm tracking-[0.3em] uppercase text-secondary mb-4">Our Services</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-secondary mb-4">Layanan Kami</p>
           <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6 text-balance">
-            Tailored to
+            Disesuaikan untuk
             <br />
-            <span className="italic font-normal">Your Perfection</span>
+            <span className="italic font-normal">Kesempurnaan Anda</span>
           </h2>
         </div>
 
@@ -69,7 +69,7 @@ export function Services() {
         <div className="mt-16 text-center">
           <WhatsAppLink source="services">
             <Button size="lg" variant="outline">
-              Schedule a Consultation
+              Jadwalkan Konsultasi
             </Button>
           </WhatsAppLink>
         </div>
