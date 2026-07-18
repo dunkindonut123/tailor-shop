@@ -67,7 +67,7 @@ export function Footer() {
           </div>
         </div>
         <div className="pt-8 border-t border-background/20 text-center text-sm text-background/50">
-          <p>© 2025 Atelier d&apos;Excellence. Hak cipta dilindungi. Didirikan 1930.</p>
+          <p>© 2025 Atelier d&apos;Excellence. Hak cipta dilindungi. Didirikan 1935.</p>
         </div>
       </div>
     </footer>

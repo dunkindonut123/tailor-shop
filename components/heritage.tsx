@@ -8,10 +8,22 @@ export function Heritage() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const images = [
-    "/images/heritage-picts/1935.png",
-    "/images/heritage-picts/1960.png",
-    "/images/heritage-picts/1980.png",
-    "/images/heritage-picts/1985.png",
+    {
+      src: "/images/heritage-picts/1935.png",
+      alt: "Arsip The Beauty Tailor tahun 1935",
+    },
+    {
+      src: "/images/heritage-picts/1960.png",
+      alt: "Arsip The Beauty Tailor tahun 1960",
+    },
+    {
+      src: "/images/heritage-picts/1980.png",
+      alt: "Arsip The Beauty Tailor tahun 1980",
+    },
+    {
+      src: "/images/heritage-picts/1985.png",
+      alt: "Arsip The Beauty Tailor tahun 1985",
+    },
   ]
 
   const scroll = (direction: "left" | "right") => {
@@ -45,8 +57,8 @@ export function Heritage() {
               {images.map((image, index) => (
                 <div key={index} className="w-full flex-shrink-0 h-full flex items-center justify-center">
                   <img
-                    src={image}
-                    alt={`Gambar warisan ${index + 1}`}
+                    src={image.src}
+                    alt={image.alt}
                     className="max-w-full max-h-full rounded-sm shadow-md object-contain"
                   />
                 </div>

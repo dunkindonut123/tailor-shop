@@ -2,6 +2,14 @@ import type React from "react"
 import type { Metadata } from "next"
 import Script from "next/script"
 import { Cormorant_Garamond, Geist_Mono } from "next/font/google"
+import { JsonLd } from "@/components/json-ld"
+import {
+  OG_IMAGE_PATH,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/lib/seo"
 import "./globals.css"
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -18,10 +26,32 @@ const META_PIXEL_ID =
   process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "3473448096145997"
 
 export const metadata: Metadata = {
-  title: "The Beauty Tailor - Tailor Bespoke Sejak 1935",
-  description:
-    "Rumah tailor bespoke legendaris yang menciptakan pakaian luar biasa dari bahan terbaik sejak 1930. Temukan keanggunan abadi dan keahlian tanpa tanding.",
-  generator: "v0.app",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    locale: "id_ID",
+    type: "website",
+    images: [
+      {
+        url: OG_IMAGE_PATH,
+        alt: SITE_NAME,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE_PATH],
+  },
   icons: {
     icon: "/logo-beauty.png",
     apple: "/logo-beauty.png",
@@ -36,6 +66,7 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth">
       <body className={`${cormorantGaramond.className} antialiased`}>
+        <JsonLd />
         {children}
 
         <noscript>

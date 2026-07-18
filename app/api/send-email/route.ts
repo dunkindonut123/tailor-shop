@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
         <p>Sementara menunggu, jika ada pertanyaan mendesak, silakan hubungi kami langsung:</p>
         <p><strong>Telepon:</strong> 021 345 1127</p>
         <p><strong>WhatsApp:</strong> +62 815 1923 6835</p>
-        <p><strong>Lokasi:</strong> Jalan Hayam Wuruk No 25, Jakarta Barat</p>
+        <p><strong>Lokasi:</strong> Jalan Hayam Wuruk No 25, Jakarta Pusat</p>
         <p>Salam hormat,<br>Tim The Beauty Tailor</p>
       `,
     })

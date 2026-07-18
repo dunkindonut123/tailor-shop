@@ -1,9 +1,27 @@
+const GALLERY_ALTS = [
+  "Jas bespoke The Beauty Tailor di atelier",
+  "Detail jahitan tangan pada jas custom",
+  "Fitting jas pria di The Beauty Tailor Jakarta",
+  "Kain wool Italia untuk jas bespoke",
+  "Proses pembuatan jas full canvas",
+  "Pelanggan dalam jas custom Jakarta",
+  "Detail kerah dan lapel jas bespoke",
+  "Jas pengantin pria custom",
+  "Atelier The Beauty Tailor Hayam Wuruk",
+  "Pemilihan kain untuk jas custom",
+  "Jahitan presisi pada lengan jas",
+  "Potongan jas formal pria",
+  "Warisan craftsmanship tailor Jakarta",
+  "Jas tuxedo custom The Beauty Tailor",
+  "Detail kancing dan lining jas bespoke",
+  "Hasil akhir jas custom siap pakai",
+] as const
+
 export function Gallery() {
-  // Create 16 images from gallery-picts folder
   const images = Array.from({ length: 16 }, (_, i) => ({
     id: i,
     src: `/images/gallery-picts/gal-${i + 1}.png`,
-    alt: `Gambar galeri ${i + 1}`,
+    alt: GALLERY_ALTS[i],
   }))
 
   return (
